@@ -32,27 +32,32 @@ export const GridExample = () => {
     fetchData();
   }, []);
 
-//   const rowData = [
-//     { make: "Tesla", model: "Model Y", price: 64950, electric: true },
-//     { make: "Ford", model: "F-Series", price: 33850, electric: false },
-//     { make: "Toyota", model: "Corolla", price: 29600, electric: false },
-//   ];
+  //   const rowData = [
+  //     { make: "Tesla", model: "Model Y", price: 64950, electric: true },
+  //     { make: "Ford", model: "F-Series", price: 33850, electric: false },
+  //     { make: "Toyota", model: "Corolla", price: 29600, electric: false },
+  //   ];
 
-    const rowData=data;
-//   const colData = [
-//     { headerName: "make", field: "make" },
-//     { headerName: "model", field: "model" },
-//     { headerName: "price", field: "price" },
-//     { headerName: "electric", field: "electric"},
-//   ];
-const colData= keys.map(key => ({
-    headerName: key,  // Use key as headerName
-    field: key        // Use key as field
+  const rowData = data;
+  //   const colData = [
+  //     { headerName: "make", field: "make" },
+  //     { headerName: "model", field: "model" },
+  //     { headerName: "price", field: "price" },
+  //     { headerName: "electric", field: "electric"},
+  //   ];
+  const colData = keys.map((key) => ({
+    headerName: key, // Use key as headerName
+    field: key, // Use key as field
   }));
 
   const defaultColDef = {
     sortable: true,
     filter: true,
+    enableRowGroup: true,
+    enablePivot: true,
+    enableValue: true,
+    flex: 1,
+    minWidth: 100,
   };
 
   return (
@@ -61,6 +66,7 @@ const colData= keys.map(key => ({
         rowData={rowData}
         columnDefs={colData}
         defaultColDef={defaultColDef}
+        pagination={true}
       />
     </div>
   );
